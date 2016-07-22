@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON( 'package.json' ),
-        
+
         less: {
             compile: {
                 options: {
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
         uglify: {
             options: {
-                compress: true,
+                compress: {},
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             compile: {
@@ -53,13 +53,13 @@ module.exports = function(grunt) {
         }
 
     });
- 
+
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-newer');
- 
+
     grunt.registerTask('default', ['less', 'uglify']);
 };
