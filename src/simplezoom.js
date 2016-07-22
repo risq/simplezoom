@@ -160,15 +160,17 @@
 
             //not working in FF?
             this.$content.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-                //remove modal
-                self.$modal.remove();
-                self.$modal = null;
-                //show default img
-                self.$img.css('visibility', 'visible');
-                //kill event
-                $(window).off('resize.simplezoom').off('scroll.simplezoom');
-                //reset state
-                self.isClosing = false;
+                if (self.$modal) {
+                    //remove modal
+                    self.$modal.remove();
+                    self.$modal = null;
+                    //show default img
+                    self.$img.css('visibility', 'visible');
+                    //kill event
+                    $(window).off('resize.simplezoom').off('scroll.simplezoom');
+                    //reset state
+                    self.isClosing = false;
+                }
             });
 
             //reset modal to init state
