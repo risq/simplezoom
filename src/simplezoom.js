@@ -254,13 +254,13 @@
             var self = this;
 
             $('<img />')
-            .load(function() {
-                callback({ 
-                    w: this.width, 
-                    h: this.height 
+            .on('load', function() {
+                callback({
+                    w: this.width,
+                    h: this.height
                 });
             })
-            .error(function() {
+            .on('error', function() {
                 //trigger onImageError event
                 self.evtTrigger('onImageError');
 
